@@ -1,0 +1,8 @@
+# Run instances contain your servers' real state — never commit them.
+runs/*
+!runs/README.md
+
+# OS / editor noise
+.DS_Store
+*.swp
+*~
