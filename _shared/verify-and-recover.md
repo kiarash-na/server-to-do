@@ -13,7 +13,7 @@ Step cards carry their own "Verify" and "If it went wrong" sections — use thos
 2. **Provider web console** — every VPS provider (Hetzner, DigitalOcean, AWS Lightsail…) has a browser-based console that behaves like a physical monitor+keyboard. Log in there, fix sshd/firewall directly.
 3. **Provider rescue mode** — boot a temporary recovery OS, mount your disk, edit `/etc/ssh/sshd_config*` or disable the firewall, reboot normally.
 4. **Snapshot restore** — roll back to the snapshot safety-rules rule 7 told you to take. You lose changes since the snapshot, not the server.
-5. Rebuild. Painful, but with Level 2 backups done, survivable — which is exactly why the pipeline ends there.
+5. Rebuild. Painful, but with Level 3 backups done, survivable — which is exactly why the pipeline ends there.
 
 ## 2. "The firewall ate my app"
 

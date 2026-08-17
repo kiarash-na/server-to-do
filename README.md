@@ -26,37 +26,52 @@ flowchart LR
     end
     L0 --> L1
     subgraph L1[01 · LOCK THE DOORS]
-        B1[firewall: default deny] --> B2[brute-force bouncer] --> B3[auto security updates] --> B4[read your attack logs]
+        B1[firewall: default deny] --> B2[brute-force bouncer] --> B3[auto security updates] --> B4[read your attack logs] --> B5[origin hidden behind Cloudflare]
     end
     L1 --> L2
     subgraph L2[02 · KEEP IT ALIVE]
-        C1[swap safety net] --> C2[time sync] --> C3[log rotation] --> C4[external uptime monitor] --> C5[backups + restore drill]
+        C1[swap safety net] --> C2[time sync] --> C3[log rotation] --> C4[external uptime monitor]
     end
-    L2 --> D[🪨 production-solid server]
+    L2 --> L3
+    subgraph L3[03 · GET IT BACK]
+        D1[provider snapshots] --> D2[know your data] --> D3[off-box file backups] --> D4[database dumps] --> D5[restore drill]
+    end
+    L3 --> L4
+    subgraph L4[04 · SHIP YOUR APP · optional]
+        E1[GitHub account & repo] --> E2[Docker] --> E3[Dokploy] --> E4[panel locked down] --> E5[domain + TLS] --> E6[push → live] --> E7[close the loop]
+    end
+    L4 --> L5
+    subgraph L5[05 · KEEP WATCH]
+        F1[metrics collected] --> F2[dashboard you can open] --> F3[alerts that find you] --> F4[logs in one place] --> F5[weekly health report]
+    end
+    L5 --> D[🚀 your app, live on your own hardened server]
 ```
 
 | Level | Mission | Time |
 |---|---|---|
 | **00 · First Contact** | Keys in, root out, system updated | ~30 min |
-| **01 · Lock the Doors** | Firewall, bouncer, auto-updates, meet your attackers | ~30 min |
-| **02 · Keep It Alive** | Swap, time, logs, uptime alerts, tested backups | ~75 min |
-| **03+ · Going Pro** | *your ideas — see [Contributing](#contributing)* | — |
+| **01 · Lock the Doors** | Firewall, bouncer, auto-updates, meet your attackers, Cloudflare lock | ~50 min |
+| **02 · Keep It Alive** | Swap, time, logs, uptime alerts | ~45 min |
+| **03 · Get It Back** | Snapshots, off-box backups, a restore you've watched work | ~60 min |
+| **04 · Ship Your App** *(optional)* | GitHub → Dokploy → push-to-live on your domain with TLS | ~2 h |
+| **05 · Keep Watch** | Metrics, dashboard, alerts that find you, logs in one place, weekly health reports | ~1.5 h |
+| **06+ · Going Pro** | *your ideas — see [Contributing](#contributing)* | — |
 
 ## 🚀 For humans
 
 ```bash
 git clone https://github.com/kiarash-na/server-to-do.git
 cd server-to-do
-cp _templates/run-instance.md runs/my-server.md   # fill the facts table
+cp -r _templates/run-instance runs/my-server   # fill runs/my-server/facts.md
 ```
 
 Take your provider's **snapshot** (the undo button), then work the levels top to bottom — or let an agent drive 👇.
 
 ## 🤖 For AI agents
 
-> *"Follow `CLAUDE.md`, obey `_shared/safety-rules.md`, run the pipeline on `runs/my-server.md`. Stop at every human check."*
+> *"Follow `CLAUDE.md`, obey `_shared/safety-rules.md`, run the pipeline on `runs/my-server/`. Stop at every human check."*
 
-That's the whole prompt. The agent works the numbered cards, verifies each with read-only commands, and stops for your yes before anything risky. Progress lives in the run file — any agent can resume from the checkboxes.
+That's the whole prompt. The agent works the numbered cards, verifies each with read-only commands, and stops for your yes before anything risky. Progress lives in the run folder — any agent can resume from the level checkboxes, and `summary.md` shows what happened at a glance.
 
 ## 🛡 The safety contract
 

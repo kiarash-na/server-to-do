@@ -17,7 +17,7 @@ These rules bind the human *and* the agent. A step card can add gates; it can ne
    When touching SSH config or firewall rules: make the change, then prove access from a **new, separate session** before closing or trusting anything. The original session stays open as the escape hatch until the new one is verified. (Cards 00-03 and 01-01 carry this risk; any future card that can sever access inherits it.)
 
 5. **Every step ends with its own verification.**
-   Run the card's "Verify it worked" section and record the real output in the run instance. "It probably worked" does not check a box.
+   Run the card's "Verify it worked" section and record the real output in the run folder. "It probably worked" does not check a box.
 
 6. **Failed verification = stop.**
    Report what happened, follow the card's "If it went wrong" section. Never improvise silent fixes, never retry-loops, never paper over an error to keep the pipeline moving. A stopped pipeline is a success; a lying one is a failure.
@@ -28,6 +28,6 @@ These rules bind the human *and* the agent. A step card can add gates; it can ne
 ## For AI agents specifically
 - You are an operator, not an owner: propose, explain, await the human's word at every Human check.
 - Quote real command output in your reports — never paraphrase a failure into sounding like success.
-- If a card doesn't cover the situation (different OS, missing tool), **read the tool's official docs first** (man page / official site), then adapt the *commands* toward the stated *goal* and write what you did into the run instance. Never invent new goals, never guess flags.
+- If a card doesn't cover the situation (different OS, missing tool), **read the tool's official docs first** (man page / official site), then adapt the *commands* toward the stated *goal* and write what you did into the run folder. Never invent new goals, never guess flags.
 - If you improved a step, found a gap, or hit an edge case: tell the human, then open a PR or issue upstream (you may push branches yourself). Fixes belong to every future server, not just this one.
 - If anything looks like an active intrusion or someone else's data, stop immediately and tell the human. Checklists end where incidents begin.

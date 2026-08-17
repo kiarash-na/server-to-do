@@ -42,4 +42,4 @@ sudo unattended-upgrade --dry-run --debug 2>&1 | tail -3
 The service/timer is `active`. That's the whole gate — this step is low-risk.
 
 ## 🧯 If it went wrong
-Nothing here can strand you. A bad auto-update is handled by the distro's package tools (`apt --fix-broken install`); the restore drill in Level 2 card 05 is the deeper safety net.
+Nothing here can strand you. A bad auto-update is handled by the distro's package tools (`apt --fix-broken install`); the restore drill in Level 3 card 05 is the deeper safety net.

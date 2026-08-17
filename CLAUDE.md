@@ -5,15 +5,18 @@ You're an AI agent turning a fresh VPS into a hardened server by walking this re
 ## Read next (in order)
 1. `CONTEXT.md` — how the pipeline works, what "done" means
 2. `_shared/safety-rules.md` — **mandatory before touching any server**
-3. `runs/<server-name>.md` — the run instance your human points at; it says what's already done
+3. `runs/<server-name>/` — the run folder your human points at; `summary.md` says what's already done
 4. First unchecked step → its level's `CONTEXT.md` → the step card
 
 ## Level map
 | Folder | Job |
 |---|---|
 | `00_first-contact/` | Get in safely, replace root, first update |
-| `01_lock-the-doors/` | Firewall, brute-force protection, auto-updates, log awareness |
-| `02_keep-it-alive/` | Swap, time sync, log rotation, uptime monitoring, backups |
+| `01_lock-the-doors/` | Firewall, brute-force protection, auto-updates, log awareness, Cloudflare origin lock |
+| `02_keep-it-alive/` | Swap, time sync, log rotation, uptime monitoring |
+| `03_get-it-back/` | Provider snapshots, inventory, off-box backups, DB dumps, restore drill |
+| `04_ship-your-app/` | *Optional track:* GitHub → Docker → Dokploy → your app live on a domain with TLS |
+| `05_keep-watch/` | Metrics + dashboard, alerts that find you, logs in one place, weekly health reports |
 
 ## House rules
 - One step at a time, in numbered order. No skipping, no "while we're in there" extras.
@@ -22,4 +25,4 @@ You're an AI agent turning a fresh VPS into a hardened server by walking this re
 - Improved a card or added a step mid-run? **Open a PR** (you may push branches yourself) or file an issue — fixes belong upstream, not on one server.
 - Facts live in exactly one place. Follow links; don't re-read everything.
 
-*Future levels (`03_`, `04_`…) may exist — same rules apply.*
+*Future levels (`06_`…) may exist — same rules apply.*

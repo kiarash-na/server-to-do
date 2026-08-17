@@ -30,7 +30,7 @@ sudo journalctl -u ssh --no-pager | grep "Accepted" | grep -oE "for \S+ from [0-
 Expect: hundreds+ failures, dozens–thousands of unique IPs, `Accepted` lines only for your user from your IPs.
 
 ## ✅ Verify it worked
-You've read the output and can answer: *how many unique IPs tried me? who successfully logged in?* Write both numbers into the run instance — they're your first baseline.
+You've read the output and can answer: *how many unique IPs tried me? who successfully logged in?* Write both numbers into the run folder — they're your first baseline.
 
 ## 🚪 Human check
 The human looks at the numbers themselves and says the magic words: "so that's why." If any `Accepted` login is unfamiliar → stop, that's an incident, not a checklist item (`../../_shared/verify-and-recover.md`).

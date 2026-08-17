@@ -4,7 +4,7 @@
 
 ## Inputs
 **Working (this run):**
-- `../runs/<server-name>.md` — the run instance; previous levels must be fully checked
+- `../runs/<server-name>/` — the run folder; previous levels must be fully checked
 **Reference (every run):**
 - `../_shared/safety-rules.md`
 - <add only what these steps actually load — glossary, verify-and-recover, or a new _shared file>
@@ -13,7 +13,7 @@
 <Card order and any ordering dependencies. Name any lockout-risk or destructive steps and which safety-rules invariants apply.>
 
 ## Outputs
-- Updated checkboxes + notes in `../runs/<server-name>.md`, section Level N
+- Updated checkboxes + notes in `../runs/<server-name>/level-N.md`, one new line in `summary.md` per step
 
 ## Human check
 <The single end-of-level confirmation — the human-verifiable state that proves the whole level landed.>
