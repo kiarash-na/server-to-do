@@ -4,7 +4,7 @@ The pipeline grows by **step cards** and **levels**. Both are templates — copy
 
 ## Adding a step card
 1. `cp _templates/step-card.md <level-folder>/NN_your-step.md` (next number in that folder)
-2. Every section is mandatory: 🧒 simple, 🛠 techie, ✅ verify, 🚪 human check, 🧯 recovery
+2. Every section is mandatory: 🐣 simple, 💀 techie, ✅ verify, 🚪 human check, 🧯 recovery
 3. Goal first, then per-OS commands. Verify = exact command + literal expected output.
 4. One human check — concrete, observable, singular.
 
@@ -14,7 +14,7 @@ The pipeline grows by **step cards** and **levels**. Both are templates — copy
 
 ## The bar every PR must clear
 - **Safety:** destructive or lockout-risk steps name the applicable rule from `_shared/safety-rules.md` and carry a tested rollback path
-- **Dual voice:** a beginner understands 🧒; a senior respects 🛠
+- **Dual voice:** a beginner understands 🐣; a senior respects 💀
 - **No vendor lock:** steps describe arrangements ("an external monitor"), not brands
 - **Walk test:** from `CLAUDE.md`, a cold agent reaches your card in ≤2 reads and knows exactly what to do from the card alone
 - Markdown only. No code, no binaries, no scripts.

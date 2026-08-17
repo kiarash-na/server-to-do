@@ -11,10 +11,10 @@ os: any
 
 # 05 — Backups, and the restore drill that proves them
 
-## 🧒 The simple version
+## 🐣 The simple version
 Everything before this step protects the server. This step protects you *from losing the server entirely* — disk death, fat-fingered command, bad deploy, provider incident. The rule professionals use is **3-2-1**: 3 copies of your data, on 2 different systems, 1 of them somewhere else entirely. And the secret everyone learns the hard way: **an untested backup is not a backup** — it's a hope. So this step ends with you actually restoring one.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** automated, off-box, redundant backups of everything that can't be rebuilt — plus one proven restore.
 
 What needs backing up (think in *data*, not servers):

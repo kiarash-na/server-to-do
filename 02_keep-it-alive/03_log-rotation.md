@@ -11,10 +11,10 @@ os: any
 
 # 03 — Log rotation
 
-## 🧒 The simple version
+## 🐣 The simple version
 Programs write diary entries (logs) constantly. Without limits, a chatty or error-looping program can fill your entire disk in a night — and a full disk crashes databases and deploys in the ugliest ways. **Log rotation** means: keep the last few diary volumes, throw away the rest, automatically. Disk stays predictable forever.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** every log source has a size/count cap.
 
 System logs: `logrotate` + journald already rotate on all major distros — verify, don't rebuild:

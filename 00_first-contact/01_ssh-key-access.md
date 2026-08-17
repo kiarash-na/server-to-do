@@ -11,12 +11,12 @@ os: any
 
 # 01 — SSH key access
 
-## 🧒 The simple version
+## 🐣 The simple version
 Right now you probably log into your server with a password. Passwords can be guessed — and as you'll see in Level 1, thousands of bots try, every single day. An **SSH key** is a pair of files: one stays secret on your computer, one goes on the server like a named badge. No badge, no entry — guessing is mathematically hopeless.
 
 Goal: you can log into the server with a key, from your own machine.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** key-based auth working for the initial login user.
 
 On your **local** machine (not the server):

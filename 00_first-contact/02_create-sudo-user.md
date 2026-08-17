@@ -11,12 +11,12 @@ os: any (commands shown for Debian/Ubuntu; RHEL/Fedora use wheel)
 
 # 02 — Create a non-root sudo user
 
-## 🧒 The simple version
+## 🐣 The simple version
 `root` is the server's god-mode account — it can delete everything with one typo, and every bot on the internet tries to log in as "root" first. So we make a normal person account for daily work, and give it a **sudo** badge: it can borrow god-mode for one command at a time, leaving a log entry each time.
 
 Goal: a named user exists, can sudo, and has your SSH key.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** non-root user in the sudo/wheel group, with your public key authorized.
 
 Run as root on the server:

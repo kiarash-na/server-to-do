@@ -11,10 +11,10 @@ os: any
 
 # 02 — Time sync
 
-## 🧒 The simple version
+## 🐣 The simple version
 If your server's clock drifts, weird things happen: logins fail for no reason, certificates look expired, logs from two machines can't be compared, scheduled jobs fire at the wrong moment. **Time sync** makes your server quietly ask official time servers "what time is it?" every few minutes, forever. Set it once, never think about it again.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** an NTP client enabled and synchronized; timezone set deliberately (UTC is the sane server default).
 
 ```bash

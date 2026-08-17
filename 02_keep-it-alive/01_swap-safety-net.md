@@ -11,10 +11,10 @@ os: any
 
 # 01 — Swap: the OOM safety net
 
-## 🧒 The simple version
+## 🐣 The simple version
 When your server runs out of memory, Linux doesn't slow down — it **kills a program instantly** to survive. It might pick your database. It has done this to many people, mid-deploy, at random. **Swap** is a file on disk that acts as emergency overflow memory: slow, but slow beats murdered. On small VPSes this single file prevents the classic "why did my container die at 3am" mystery.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** a swapfile of ~25–50% of RAM (2GB is right for 4–8GB RAM), active and persistent across reboots.
 
 ```bash

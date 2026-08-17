@@ -11,12 +11,12 @@ os: any
 
 # 03 — Disable root login and password auth
 
-## 🧒 The simple version
+## 🐣 The simple version
 Now that your personal account works with a key, we weld two doors shut: "log in as root" and "log in with a password". After this, the only way in is your key, as your named user. Every password-guessing bot on Earth becomes harmless background noise.
 
 ⚠️ This is the one step that can lock you out if done carelessly. That's why we test the new door **before** closing the old one.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** `PermitRootLogin no`, `PasswordAuthentication no`, `PubkeyAuthentication yes`.
 
 ```bash

@@ -11,10 +11,10 @@ os: any
 
 # 02 — Brute-force protection
 
-## 🧒 The simple version
+## 🐣 The simple version
 Right now, robots are typing passwords into your server — hundreds of times a day, forever. They can't get in (Level 0 killed password login), but each attempt wastes resources and clutters your logs. A **brute-force blocker** watches the logs and automatically bans any IP that fails too many times — like a bouncer who remembers faces.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** repeated auth failures → temporary IP ban, applied at the firewall.
 
 ```bash

@@ -11,10 +11,10 @@ os: any
 
 # 04 — Know who is knocking
 
-## 🧒 The simple version
+## 🐣 The simple version
 This step changes nothing — it just *shows* you the internet. You'll look at your login log and see hundreds or thousands of failed attempts from strangers. That's not a breach; that's background radiation. Seeing it once teaches you two things permanently: why Levels 0–1 mattered, and what "normal" looks like — so one day you'll spot "not normal".
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** read the auth log; confirm failures exist but zero unexpected successes.
 
 ```bash

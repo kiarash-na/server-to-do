@@ -11,12 +11,12 @@ os: any (ufw / firewalld / nftables examples)
 
 # 01 — Firewall: default deny, allow only what you need
 
-## 🧒 The simple version
+## 🐣 The simple version
 Your server has thousands of invisible "doors" (ports), and any program can open one. A firewall is the bouncer: **every door is closed by default**, and you hand it a guest list — typically just SSH (22) and web (80/443). Anything not on the list never even reaches your programs.
 
 ⚠️ The #1 self-inflicted server injury is firewalling yourself out. We allow SSH **before** we turn the bouncer on, and we test from a new session before trusting it.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** incoming default-deny; allow only 22 (+80/443 if web-serving); outgoing allowed.
 
 ```bash

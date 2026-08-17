@@ -11,10 +11,10 @@ os: any
 
 # 04 — First full system update
 
-## 🧒 The simple version
+## 🐣 The simple version
 Your server image was baked weeks or months ago. Since then, security holes were found and fixed — but the fixes aren't on your machine yet. This step downloads all of them in one go. Do it now, before the server matters, because it's the one moment a surprise reboot hurts nobody.
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** package index refreshed, all upgrades applied, reboot if the kernel changed.
 
 ```bash

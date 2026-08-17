@@ -11,10 +11,10 @@ os: any
 
 # 03 — Automatic security updates
 
-## 🧒 The simple version
+## 🐣 The simple version
 New security holes are found every week. You will forget to patch. The server won't. This step makes security fixes install themselves overnight, so "did I patch that thing in the news?" is always answered with "already done".
 
-## 🛠 The techie version
+## 💀 The techie version
 **Goal:** security updates applied automatically on a schedule; reboots stay manual (or scheduled) — never mid-day surprises.
 
 ```bash

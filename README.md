@@ -20,7 +20,7 @@
 
 Every new VPS starts the same way: a root password, a thousand bots already knocking, and a mental checklist you're *sure* you'll remember this time. You won't. Nobody does.
 
-**server-to-do** is that checklist, written down properly: OS-agnostic, goal-first, safety-obsessed — and structured with [ICM](https://github.com/RinDig/icm-architect) so an AI agent can walk it end-to-end while you approve each step. Vibe coders welcome: every card explains itself twice, once 🧒 simple, once 🛠 technical.
+**server-to-do** is that checklist, written down properly: OS-agnostic, goal-first, safety-obsessed — and structured with [ICM](https://github.com/RinDig/icm-architect) so an AI agent can walk it end-to-end while you approve each step. Vibe coders welcome: every card explains itself twice, once 🐣 simple, once 💀 technical.
 
 ```mermaid
 flowchart LR
@@ -89,7 +89,7 @@ The agent will orient from `CLAUDE.md`, work the numbered cards in order, verify
 
 ## Contributing
 
-New levels and steps are the point. Copy `_templates/step-card.md` (every section is mandatory), or `_templates/level-CONTEXT.md` for a whole new `03_…` level. Keep the dual 🧒/🛠 voices, keep verification literal, keep the human gate. Then open a PR.
+New levels and steps are the point. Copy `_templates/step-card.md` (every section is mandatory), or `_templates/level-CONTEXT.md` for a whole new `03_…` level. Keep the dual 🐣/💀 voices, keep verification literal, keep the human gate. Then open a PR.
 
 Ideas already floating: `03_going-pro` (reverse-proxy origin locking, container resource limits, kernel livepatch), `04_fleet-life` (second server, config management, secrets handling)…
 

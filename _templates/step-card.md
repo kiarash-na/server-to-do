@@ -14,12 +14,12 @@ os: any | <families covered>
 <!-- Every section is mandatory. Delete these comments. Keep total card size small:
      an agent should load entry + contract + one card inside 2–8k tokens. -->
 
-## 🧒 The simple version
+## 🐣 The simple version
 <What is this and why, in words a total beginner understands. One concept per card.
  Link to ../../_shared/glossary.md terms instead of re-explaining them.
  If the step can hurt, say so here with a ⚠️ and why the card's design makes it safe.>
 
-## 🛠 The techie version
+## 💀 The techie version
 <**Goal:** one sentence, tool-agnostic. Then example commands per OS family.
  State the goal so an agent on an unlisted OS can adapt commands toward it.>
 
