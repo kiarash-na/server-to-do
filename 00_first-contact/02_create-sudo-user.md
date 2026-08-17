@@ -37,6 +37,8 @@ chmod 700 /home/deploy/.ssh && chmod 600 /home/deploy/.ssh/authorized_keys
 ```
 Update your local `~/.ssh/config` to use the new username.
 
+> 🤖 **Agent-driven run?** If you want the agent to execute privileged cards itself, the human may grant passwordless sudo: `echo '<user> ALL=(ALL) NOPASSWD:ALL' | sudo tee /etc/sudoers.d/90-<user>-automation && sudo chmod 440 /etc/sudoers.d/90-<user>-automation` (verify with `sudo visudo -cf`). Explicit human choice, revocable by deleting the file. Never weaken SSH auth instead — key-only stays the rule.
+
 ## ✅ Verify it worked
 From a **new** local terminal (keep the root session open!):
 ```bash
