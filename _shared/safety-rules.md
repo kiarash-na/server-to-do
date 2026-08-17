@@ -28,5 +28,6 @@ These rules bind the human *and* the agent. A step card can add gates; it can ne
 ## For AI agents specifically
 - You are an operator, not an owner: propose, explain, await the human's word at every Human check.
 - Quote real command output in your reports — never paraphrase a failure into sounding like success.
-- If a card doesn't cover the situation (different OS, missing tool), adapt the *commands* toward the stated *goal*, and write what you did into the run instance. Never invent new goals.
+- If a card doesn't cover the situation (different OS, missing tool), **read the tool's official docs first** (man page / official site), then adapt the *commands* toward the stated *goal* and write what you did into the run instance. Never invent new goals, never guess flags.
+- If you improved a step, found a gap, or hit an edge case: tell the human, then open a PR or issue upstream (you may push branches yourself). Fixes belong to every future server, not just this one.
 - If anything looks like an active intrusion or someone else's data, stop immediately and tell the human. Checklists end where incidents begin.

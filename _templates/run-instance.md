@@ -1,16 +1,24 @@
----
-server: <hostname>
-ip: <server-ip>
-provider: <hetzner | digitalocean | aws | …>
-os: <ubuntu 26.04 | debian 13 | rocky 10 | …>
-started: <YYYY-MM-DD>
-agent: <who/what is running this>
-snapshot_taken: no        # flip to yes BEFORE card 00-01 (safety rule 7)
----
-
 # Run: <server-name>
 
-State of this server through the pipeline. The agent updates this file after every verified step — this file is the pipeline's memory. Never commit it upstream (see `.gitignore`).
+State of one server through the pipeline. The agent updates this file after every verified step — this file is the pipeline's memory. Never commit it upstream (see `.gitignore`).
+
+## Server facts — lock these in before card 00-01
+The agent fills/verifies every row during the first scan. After that, these values are frozen facts — commands get adapted to *this* server, not to a generic one.
+
+| Fact | Value | How to check |
+|---|---|---|
+| Hostname | | `hostname` |
+| Public IP | | `curl -4 ifconfig.me` |
+| Provider | | (human fills in) |
+| OS & version | | `lsb_release -a` or `cat /etc/os-release` |
+| Kernel / arch | | `uname -sr && uname -m` |
+| Package manager | | apt / dnf / apk — decides command examples |
+| Init system | | `ps -p 1 -o comm=` |
+| Init access as | | root / other user |
+| SSH port | 22 unless changed | `sshd -T \| grep ^port` |
+| Sudo user (after level 0) | | fill in at card 00-02 |
+| Snapshot taken | **no** — flip to yes BEFORE card 00-01 | safety rule 7 |
+| Agent running this | | who/what + date started |
 
 ## Level 0 — First Contact
 - [ ] 01 SSH key access — notes:
@@ -32,4 +40,4 @@ State of this server through the pipeline. The agent updates this file after eve
 - [ ] 05 Backups — layers: ___ | restore drill date + result:
 
 ## Incidents & adaptations
-<Anything that deviated from the cards: OS adaptations, failures + recoveries, deliberate skips with reasons. Future-you will read exactly this section.>
+<Anything that deviated from the cards: OS adaptations, failures + recoveries, deliberate skips with reasons. Future-you will read exactly this section. If a deviation would help other servers too, open a PR or issue upstream.>
