@@ -21,11 +21,17 @@ The moment the whole pipeline exists for: connect your GitHub repo to Dokploy, p
 - Set the domain to `app.example.com`, HTTPS on (Let's Encrypt — card 05 made this possible). Enable **auto-deploy on push** if you want the full push→live loop.
 - Secrets go in Dokploy's **Environment** editor — never committed. Already committed one? Rotate it (the old value is burned), then scrub git history at leisure.
 - App needs Postgres/MySQL/Redis? Dokploy runs them as sibling services — which makes card 07 (backups for exactly these) non-optional rather than decorative.
+- **Data the app writes needs a named volume.** Many images declare a `VOLUME` (agents, CMSes, anything with a data dir). If you don't add a volume mount for that path in the application's Dokploy settings, every new swarm task gets a fresh anonymous volume: each redeploy, and also each reboot.
+  - The app silently starts blank, and the old data sits orphaned among dozens of 64-hex volumes.
+  - Add the named mount **before** real data goes in.
+  - Never `docker volume prune` until you know which app each anonymous volume belonged to.
 
 ## ✅ Verify it worked
 ```bash
 curl -sI https://app.example.com | head -1     # HTTP/2 200 (or your app's expected status)
 sudo docker ps --format '{{.Names}} {{.Status}}'   # your app's container, Up
+sudo docker inspect <container> --format '{{range .Mounts}}{{.Type}} {{.Name}} -> {{.Destination}}{{"\n"}}{{end}}'
+# Expected for a stateful app: "volume <a-name-you-chose> -> /your/data/path", NOT a 64-hex name
 ```
 
 ## 🚪 Human check
