@@ -26,11 +26,19 @@ What you're trusting, stated plainly: that script, as root, initializes Docker S
 Notes:
 - The installer **publishes ports**, including the admin panel on `3000` — published by Docker, which means *around* ufw (card 01-01's warning). Exposed-by-default is expected at this point; card 04 locks it down **immediately after**. Do not pause between the two cards.
 - Peer alternative: **Coolify** (<https://docs.coolify.io>) — same goal, same kind of installer, same card-04 obligation. The cards here stay valid; swap the commands.
+- **Reboot race.** Traefik, and any compose app attached to `dokploy-network`, runs as a plain container on a swarm overlay network. After a reboot (including a provider-snapshot shutdown) or a Docker daemon restart (including a Docker package upgrade), it can lose the race to the network and exit with `network dokploy-network not found`. Docker never retries that error, even with `restart: always`. Every site goes down, and Cloudflare shows **521**.
+  - Immediate fix: `sudo docker start dokploy-traefik`.
+  - Durable fix: a boot job ordered after `docker.service` that waits until the network exists, then starts only the containers whose start error was "network … not found".
 
 ## ✅ Verify it worked
 ```bash
 sudo docker service ls    # dokploy, dokploy-postgres, dokploy-redis, traefik — all replicated 1/1
 sudo docker node ls       # this node: STATUS Ready, AVAILABILITY Active, MANAGER STATUS Leader
+```
+After every reboot or Docker upgrade, for the life of the server:
+```bash
+sudo docker ps -a --filter name=dokploy-traefik --format '{{.Names}} {{.Status}}'
+# Expected: dokploy-traefik Up …   (NOT "Exited (128)": see the reboot race above)
 ```
 
 ## 🚪 Human check

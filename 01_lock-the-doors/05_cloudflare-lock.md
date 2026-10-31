@@ -25,7 +25,7 @@ We set the lock at your **provider's firewall panel first**, because it sits out
 **Goal:** origin accepts 80/443 *exclusively* from Cloudflare edge IPs; direct-IP web access is dead. SSH rules from cards 00–01 stay untouched.
 
 1. **Proxy the DNS.** Site added to Cloudflare, A/AAAA records set to *proxied* (orange cloud). Confirm the site loads normally through the proxy before touching any firewall.
-2. **Provider cloud firewall (primary enforcement).** Inbound rule: allow 80+443/tcp **only** from the ranges at <https://www.cloudflare.com/ips/> — both the IPv4 *and* IPv6 lists. (Hetzner/DigitalOcean/AWS SG/OVH all have this panel; if a provider truly lacks one, the in-VM layer below becomes the only net.)
+2. **Provider cloud firewall (primary enforcement).** Inbound rule: allow 80+443/tcp **only** from the ranges at <https://www.cloudflare.com/ips/> — both the IPv4 *and* IPv6 lists. (Hetzner/DigitalOcean/AWS SG/OVH all have this panel; if a provider truly lacks one, the in-VM layer below becomes the only net.) Read the provider's docs on **return traffic**. Some firewalls auto-accept replies for TCP only, so once the policy is live every UDP reply is dropped, and time sync dies silently. If yours is one of them, add card 02-02's UDP 123 rule in the same edit.
 3. **In-VM mirror (backstop).** ufw example: `sudo ufw allow from <range> to any port 80,443 proto tcp` for each range, then delete card 01's blanket `allow 80`/`allow 443`. Ranges change rarely but they *do* change — Cloudflare serves them as text/JSON, so a tiny scheduled refresh job keeps the lists honest.
 4. **Optional, stronger:** Authenticated Origin Pulls — Cloudflare proves itself with a client certificate (mTLS), so even a correct-looking IP without the cert is refused.
 
@@ -42,6 +42,8 @@ curl -I https://yourdomain.com   # 200 — through the shield works
 curl -I --max-time 5 http://<server-ip>   # from another machine: times out — around the shield is dead
 ```
 Plus: the provider firewall panel shows the Cloudflare-ranges rule. (Website broken? You locked out Cloudflare itself — stale or IPv4-only ranges. Re-sync from the docs above.)
+- **Trust the outside probe, not the panel.** A policy that shows as attached but was never **saved** filters nothing. The `curl` timeout above is the proof.
+- Then re-run card 02-02's verify: `timedatectl | grep synchronized` must still say `yes` once the provider policy is enforcing.
 
 ## 🚪 Human check
 The human opens the website in their own browser and it loads normally, and has seen the `dig` output showing Cloudflare IPs — not the origin's. (No public website on this box? Mark this step n/a in the level file.)
