@@ -39,3 +39,8 @@ Change something *visible* in the repo (a heading, a version string), `git push`
 
 ## 🧯 If it went wrong
 Undeploying is one click; the server itself was never at risk. Build/deploy logs live in the Dokploy UI (and `sudo docker service logs <app>`). "Works on my laptop, fails here" is 90% missing env vars or a missing Dockerfile/build config — compare Dokploy's env editor against whatever your laptop has in `.env`.
+
+**Build dies while downloading dependencies** (`npm install`, `pip install`, `apt-get` in the Dockerfile)? npm may only print `Exit handler never called!`; the real error (`EAI_AGAIN` / `ENOTFOUND`) is in its debug log. That's "no DNS inside containers", not bad code.
+- Test: `sudo docker run --rm busybox nslookup registry.npmjs.org` (the host resolving fine proves nothing).
+- Usual cause on **Oracle Cloud and Google Cloud**: the network's DNS resolver is `169.254.169.254`, the same link-local address as the cloud-metadata service. Any firewall that blocks metadata for containers (some PaaS tools ship one, e.g. Temps' `temps_metadata` nftables table) blocks DNS with it.
+- Fix: give Docker its own resolvers in `/etc/docker/daemon.json` (`"dns": ["1.1.1.1", "9.9.9.9"]`, per Docker's daemon troubleshooting docs), check with `sudo dockerd --validate --config-file /etc/docker/daemon.json`, stop the PaaS, restart Docker (restarts every container), start the PaaS, re-test, redeploy. The metadata block stays in place.
